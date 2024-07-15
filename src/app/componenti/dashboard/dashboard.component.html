@@ -1,0 +1,33 @@
+<div class="header">
+<h1>I nostri viaggi disponibili</h1>
+</div>
+
+<div class="horizontal-form-container">
+  <form class="horizontal-form" #filtriForm="ngForm" (ngSubmit)="applicaFiltri(filtriForm)">
+    <label for="startDate">Data Inizio:</label>
+    <input type="date" placeholder="Data Inizio" [(ngModel)]="startDate" name="startDate" required>
+    <label for="endDate">Data Fine:</label>
+    <input type="date" placeholder="Data Fine" [(ngModel)]="endDate" name="endDate" required>
+    <p-button label="Applica Filtri" icon="pi pi-check" type="submit"></p-button>
+  </form>
+</div>
+
+  <div class="travel-container">
+    <div class="travel-card" *ngFor="let trip of trips">
+      <div class="travel-header">
+        <h2>{{ trip.type }}</h2>
+      </div>
+      <div class="travel-dates">
+        <p><i class="pi pi-calendar"></i> Inizio: {{ trip.startDate }}</p>
+        <p><i class="pi pi-calendar"></i> Fine: {{ trip.endDate }}</p>
+      </div>
+      <div class="travel-preferences">
+        <p><i class="pi pi-map-marker"></i> Percorso: {{ trip.startDestination.name }} - {{ trip.endDestination.name }}</p>
+        <p><i class="pi pi-car"></i> Veicolo: {{ trip.vehicle }}</p>
+      </div>
+      <div class="button-footer">
+      <p-button label="Dettagli del Viaggio" icon="pi pi-info-circle" (click)="travelDetails(trip)" />
+      </div>
+    </div>
+</div>
+<p-paginator (onPageChange)="onPageChange($any($event))" [first]="filters.page * filters.tripsSize" [rows]="filters.tripsSize" [totalRecords]="totalTrips" />

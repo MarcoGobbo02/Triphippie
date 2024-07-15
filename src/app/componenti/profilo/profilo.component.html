@@ -1,0 +1,38 @@
+<div class="profile-box">
+    <!-- Sezione immagine profilo -->
+    <div class="profile-section">
+      <ng-container *ngIf="!profileImage; else imageTemplate">
+        <input class="custom-file-input" type="file" (change)="onProfileImageChange($event)" accept="image/*">
+      </ng-container>
+      <ng-template #imageTemplate>
+        <div class="image-upload">
+          <img [src]="profileImage" alt="Profile Image" class="profile-image"/>   
+        </div>
+        <div class="button-image">
+          <p-button (click)="modificaImmagine()" label="Modifica Immagine" />
+          <p-button (click)="eliminaImmagine()" label="Elimina Immagine" />  
+        </div>  
+      </ng-template>
+    </div>
+    <!-- Sezione nome e cognome -->
+    <div class="profile-section">
+      <h3>{{utente.firstName}} {{utente.lastName}}</h3>
+      <p>{{"@" + utente.username}}</p>
+    </div>
+    <!-- Sezione altre informazioni -->
+    <div class="profile-section">
+      <h4>Informazioni Personali</h4>
+      <p>Città: {{utente.city}}</p>
+      <p>Data di Nascita: {{utente.dateOfBirth | date}}</p>
+      <p>Email: {{utente.email}}</p>
+      <p>About: {{utente.about}}</p>
+    </div>
+    <div class="profile-footer">
+      <p-toast />
+      <p-confirmDialog />
+      <p-button (click)="editConfirm($event)" label="Modifica Account" [outlined]="true"  icon="pi pi-user-edit" />
+      <p-button (click)="deleteConfirm($event)" label="Elimina Account" severity="danger" [outlined]="true" icon="pi pi-trash" />  
+    </div>
+</div>  
+
+  

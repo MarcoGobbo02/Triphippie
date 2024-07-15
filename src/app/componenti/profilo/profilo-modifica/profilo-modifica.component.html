@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="register-box">
+      <h2>Modifica</h2>
+      <form #regstrazioneForm="ngForm" (ngSubmit)="onEdit(regstrazioneForm)">
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" required [(ngModel)]="utente.username">
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required ngModel>
+        </div>
+        <div class="form-group">
+          <label for="firstName">Nome:</label>
+          <input type="text" id="firstName" name="firstName" required [(ngModel)]="utente.firstName">
+        </div>
+        <div class="form-group">
+          <label for="lastName">Cognome:</label>
+          <input type="text" id="lastName" name="lastName" required [(ngModel)]="utente.lastName">
+        </div>
+        <div class="form-group">
+          <label for="dateOfBirth">Data di nascita:</label>
+          <input type="date" id="dateOfBirth" name="dateOfBirth" [(ngModel)]="utente.dateOfBirth">
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" [(ngModel)]="utente.email">
+        </div>
+        <div class="form-group form-group-full">
+          <label for="about">About:</label>
+          <textarea id="about" name="about" rows="5"[(ngModel)]="utente.about"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="city">City:</label>
+          <input type="text" id="city" name="city" [(ngModel)]="utente.city">
+        </div>
+        <div class="form-button">
+          <p-button type="submit" label="Modifica il tuo Account" [disabled]="!regstrazioneForm.valid"></p-button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

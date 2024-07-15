@@ -1,0 +1,54 @@
+<div class="container">
+    <form #viaggioForm="ngForm" (ngSubmit)="editTrip(viaggioForm)">
+        <h2>Modifica il tuo Viaggio!</h2>
+        <div class="form-row">
+            <div>
+                <label for="startDate">Data di inizio del viaggio:</label>
+                <input type="date" id="startDate" name="startDate" required [(ngModel)]="trip.startDate">
+            </div>
+            <div>
+                <label for="endDate">Data di fine del viaggio:</label>
+                <input type="date" id="endDate" name="endDate" required [(ngModel)]="trip.endDate">
+            </div>
+        </div>
+        <div class="form-row">
+            <div>
+                <label for="vehicle">Veicolo:</label>
+                <select id="vehicle" name="vehicle" required [(ngModel)]="trip.vehicle">
+                  <option >AUTO</option>
+                  <option >BICICLETTA</option>
+                  <option >AEREO</option>
+                  <option >TRENO</option>
+                  <option >MOTOCICLO</option>
+                </select>
+            </div>
+            <div>
+                <label for="type">Tipo di viaggio:</label>
+                <select id="type" name="type" required [(ngModel)]="trip.type">
+                    <option >RELAX</option>
+                    <option >DEGUSTAZIONE</option>
+                    <option >ESCURSIONE</option>
+                    <option >CULTURALE</option>
+                    <option >FAMIGLIE</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div>
+                <label for="startDestination">Punto di partenza del Viaggio:</label>
+                <input type="text" id="startDestination" name="startDestination" required [(ngModel)]="trip.startDestination.name">
+            </div>
+            <div>
+                <label for="endDestination">Punto di arrivo del Viaggio:</label>
+                <input type="text" id="endDestination" name="endDestination" required [(ngModel)]="trip.endDestination.name">
+            </div>
+        </div>
+        <div>
+            <label for="description">Descrizione:</label>
+            <textarea id="description" name="description" rows="5" placeholder="Una breve descrizione del viaggio" [(ngModel)]="trip.description"></textarea>
+        </div>
+        <div class="form-button">
+            <p-button type="Submit" icon="pi pi-fw pi-pencil" label="Modifica Viaggio!" [disabled]="!viaggioForm.valid"></p-button>
+        </div>
+    </form>
+ </div>

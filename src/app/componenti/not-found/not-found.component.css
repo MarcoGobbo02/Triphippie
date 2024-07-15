@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #e0e0e0; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .error-box {
+    background-color: #fff;
+    padding: 2rem;
+    margin: 1rem;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .error-box h1 {
+    font-size: 6rem;
+    margin: 0;
+    color: #e74c3c;
+    text-align: center;
+  }
+  
+  .error-box p {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+  }
+  
+  .button404{
+    text-align: center;
+  }
+  
+  

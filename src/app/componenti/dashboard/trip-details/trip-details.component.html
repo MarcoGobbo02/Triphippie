@@ -1,0 +1,35 @@
+<div class="trip-details-container">
+    <div class="trip-header">
+      <h2>{{trip.type}}</h2>
+    </div>
+    <div class="trip-dates">
+      <p><i class="pi pi-calendar"></i> Inizio: {{trip.startDate}}</p>
+      <p><i class="pi pi-calendar"></i> Fine: {{trip.endDate}}</p>
+    </div>
+    <div class="trip-preferences">
+      <p><i class="pi pi-map-marker"></i> Percorso: {{trip.startDestination.name}} - {{trip.endDestination.name}}</p>
+      <p><i class="pi pi-car"></i> Veicolo: {{trip.vehicle}}</p>
+    </div>
+    <div class="trip-description">
+      <p>{{trip.description}}</p>
+    </div>
+    <div class="journeys">
+      <h3>Percorsi</h3>
+      <div class="journey-card-container">
+        <div class="journey" *ngFor="let journey of journeys">
+          <p><strong>Destinazione:</strong> {{journey.destination.name}}</p>
+          <p><strong>Descrizione:</strong> {{journey.description}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="button-footer">
+    <p-button label="Aggiungi Percorso" icon="pi pi-plus" [outlined]="true" (onClick)="toggleForm()"></p-button>
+    <form *ngIf="showForm"  #journeyForm="ngForm" class="add-journey-form" (ngSubmit)="onCreate(journeyForm)" >
+      <h3>Aggiungi Nuovo Percorso</h3>
+      <input type="text" placeholder="Destinazione" ngModel name="destination" required>
+      <input type="text" placeholder="Descrizione" ngModel name="description" required>
+      <p-button label="Salva" icon="pi pi-check" [outlined]="true" type="submit"></p-button>
+    </form>
+    </div>
+  </div>
+  

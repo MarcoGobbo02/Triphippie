@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="login-box">
+      <h2>Login</h2>
+      <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)"> 
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" required ngModel>
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required ngModel>
+        </div>
+        <p-button type="Submit" label="Accedi" [disabled]="!loginForm.valid" icon="pi pi-sign-in"/>
+      </form>
+      <div class="form-foot">
+      <p>Non hai un account? <a routerLink="/registrazione">Registrati ora!</a></p>
+      </div>
+    </div>
+    <div class="error-message" *ngIf="loginFailed">
+      <p>Credenziali errate!</p>
+  </div>
+</div>
+  

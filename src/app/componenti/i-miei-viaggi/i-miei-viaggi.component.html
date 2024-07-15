@@ -1,0 +1,21 @@
+<h1 *ngIf="isEmpty">Per visualizzare un tuo viaggio prima inseriscine uno!</h1>
+
+<div *ngIf="!isEmpty" class="travel-container">
+  <div class="travel-card" *ngFor="let trip of trips">
+    <div class="travel-header">
+      <h2>{{ trip.type }}</h2>
+    </div>
+    <div class="travel-dates">
+      <p><i class="pi pi-calendar"></i> Inizio: {{ trip.startDate }}</p>
+      <p><i class="pi pi-calendar"></i> Fine: {{ trip.endDate }}</p>
+    </div>
+    <div class="travel-preferences">
+      <p><i class="pi pi-map-marker"></i> Percorso: {{ trip.startDestination.name }} - {{ trip.endDestination.name }}</p>
+      <p><i class="pi pi-car"></i> Veicolo: {{ trip.vehicle }}</p>
+    </div>
+    <div class="button-footer">
+      <p-button label="Modifica" icon="pi pi-pencil" [outlined]="true" (click)="editTrip(trip)"></p-button>
+      <p-button label="Elimina" icon="pi pi-trash" [outlined]="true" severity="danger" (click)="deleteTrip(trip)"></p-button>
+    </div>
+  </div>
+</div>

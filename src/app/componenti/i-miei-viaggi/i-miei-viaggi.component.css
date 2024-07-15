@@ -1,0 +1,55 @@
+.travel-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
+    justify-content: center;
+    padding: 20px;
+}
+
+.travel-card {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 320px;
+    padding: 20px;
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.travel-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.travel-header {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.travel-header h2 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.travel-dates, .travel-preferences, .travel-description {
+    margin-bottom: 10px;
+}
+
+.travel-dates p, .travel-preferences p {
+    margin: 5px 0;
+}
+
+.travel-dates p i, .travel-preferences p i {
+    margin-right: 5px;
+}
+
+.button-footer {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    margin-top: 15px;
+}

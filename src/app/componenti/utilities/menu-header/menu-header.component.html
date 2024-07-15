@@ -1,0 +1,22 @@
+<p-menubar>
+    <ng-template pTemplate="start">
+      <div class="menu-container">
+        <a [routerLink]="['/home']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true}">
+          <i class="pi pi-fw pi-home"></i>
+          Home
+        </a>
+        <a *ngIf="isLoggedIn" [routerLink]="['/dashboard']" routerLinkActive="active">
+          <i class="pi pi-fw pi-car"></i>
+          Cerca un Viaggio!
+        </a>
+        <a *ngIf="!isLoggedIn" [routerLink]="['/login']" routerLinkActive="active">
+          <i class="pi pi-fw pi-user"></i>
+          Area Riservata
+        </a>
+        <a *ngIf="isLoggedIn" [routerLink]="['/area-riservata/profilo']" routerLinkActive="active">
+          <i class="pi pi-fw pi-user"></i>
+          Area Riservata
+        </a>
+      </div>
+    </ng-template>
+  </p-menubar>

@@ -1,0 +1,29 @@
+.header {
+    background: linear-gradient(90deg, #8ea4d8 0%, #1220df 100%);
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+}
+.container {
+    padding: 20px;
+    text-align: center;
+}
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.feature {
+    background-color: #fff;
+    margin: 10px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+.feature h3 {
+    color: #1220df;
+}
+
+

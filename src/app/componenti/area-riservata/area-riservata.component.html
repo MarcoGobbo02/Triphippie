@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="left-side">
+      <a [routerLink]="['/area-riservata/profilo']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <i class="pi pi-fw pi-user"></i>
+        Il mio profilo
+      </a>
+      <a [routerLink]="['/area-riservata/crea-viaggio']" routerLinkActive="active">
+        <i class="pi pi-fw pi-compass"></i>
+        Inserisci un Viaggio!
+      </a>
+      <a [routerLink]="['/area-riservata/i-miei-viaggi']" routerLinkActive="active">
+        <i class="pi pi-fw pi-map"></i>
+        I miei Viaggi!
+      </a>
+      <a href="#" (click)="logout($event)">
+        <i class="pi pi-fw pi-sign-out"></i>
+        Logout
+      </a>
+      
+    </div>
+    <div class="right-side">
+       <router-outlet></router-outlet>  
+    </div>
+  </div>

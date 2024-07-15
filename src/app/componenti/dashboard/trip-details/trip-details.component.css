@@ -1,0 +1,80 @@
+.trip-details-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 2em auto;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.trip-header {
+  margin-bottom: 20px;
+}
+
+.trip-header h2 {
+  margin: 0;
+  font-size: 2em;
+  color: #333;
+}
+
+.trip-dates, .trip-preferences, .trip-description {
+  margin-bottom: 20px;
+}
+
+.trip-dates p, .trip-preferences p {
+  margin: 5px 0;
+}
+
+.trip-dates p i, .trip-preferences p i {
+  margin-right: 5px;
+}
+
+.journeys {
+  margin-top: 20px;
+}
+
+.journey-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  justify-content: center;
+}
+
+.journey {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  text-align: left;
+}
+
+.journey:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.add-journey-form {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.add-journey-form h3 {
+  margin-bottom: 10px;
+}
+
+.add-journey-form input {
+  width: calc(100% - 20px);
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.button-footer{
+  margin: 1em;
+}

@@ -1,0 +1,101 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .register-box {
+    background-color: #ffffff;
+    padding: 2rem;
+    margin: 2rem; 
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ccc;
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  
+  .register-box h2 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+  }
+  
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+    flex: 1 1 calc(33.333% - 2rem); 
+    min-width: 200px;
+    box-sizing: border-box;
+    padding: 0 1rem;
+  }
+  
+  .form-group-full {
+    flex: 1 1 100%;
+    padding: 0 1rem;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: #1220df;
+    box-shadow: 0 0 5px rgba(40, 87, 167, 0.5);
+    outline: none;
+  }
+  
+  .form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+    max-height: 200px;
+    line-height: 1;
+  }
+  
+  .form-foot {
+    margin-top: 1em;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .form-button {
+    width: 100%;
+    text-align: center;
+    margin-top: 1rem;
+  }
+  
+  
