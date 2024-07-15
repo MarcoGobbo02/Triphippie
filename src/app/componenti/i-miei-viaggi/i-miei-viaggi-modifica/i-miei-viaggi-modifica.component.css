@@ -74,7 +74,9 @@ body {
   }
   
   .form-button {
-    width: 100%;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    margin-top: 15px;
   }
   

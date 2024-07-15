@@ -49,6 +49,7 @@
         </div>
         <div class="form-button">
             <p-button type="Submit" icon="pi pi-fw pi-pencil" label="Modifica Viaggio!" [disabled]="!viaggioForm.valid"></p-button>
+            <p-button (click)="editjourneys(trip.id)" icon="pi pi-fw pi-pencil" label="Modifica le Tappe Associate!" severity="secondary"></p-button>
         </div>
     </form>
  </div>

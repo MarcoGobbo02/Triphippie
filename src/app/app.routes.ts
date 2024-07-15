@@ -12,6 +12,7 @@ import { CreaViaggioComponent } from './componenti/crea-viaggio/crea-viaggio.com
 import { IMieiViaggiComponent } from './componenti/i-miei-viaggi/i-miei-viaggi.component';
 import { IMieiViaggiModificaComponent } from './componenti/i-miei-viaggi/i-miei-viaggi-modifica/i-miei-viaggi-modifica.component';
 import { TripDetailsComponent } from './componenti/dashboard/trip-details/trip-details.component';
+import { ModificaTappeComponent } from './componenti/i-miei-viaggi/modifica-tappe/modifica-tappe.component';
 
 export const routes: Routes = [
     {path: '', redirectTo:'home' , pathMatch:'full'},
@@ -27,6 +28,7 @@ export const routes: Routes = [
         {path:'crea-viaggio', component:CreaViaggioComponent, canActivate: [AuthGuard] },
         {path:'i-miei-viaggi', component:IMieiViaggiComponent, canActivate: [AuthGuard] },
         {path:'modifica-viaggio', component:IMieiViaggiModificaComponent, canActivate: [AuthGuard] },
+        {path:'modifica-tappe', component:ModificaTappeComponent, canActivate: [AuthGuard] },
     ]},
     {path: '**', component:NotFoundComponent},
 ];

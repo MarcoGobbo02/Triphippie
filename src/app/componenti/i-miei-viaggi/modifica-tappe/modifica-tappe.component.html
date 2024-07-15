@@ -1,0 +1,29 @@
+<!-- journey-details.component.html -->
+
+<div class="header">
+    <h1>Dettagli dei Journeys</h1>
+  </div>
+  
+  <div class="journeys-container">
+    <div *ngFor="let journey of journeys" class="journey-form-container">
+      <form #journeyForm="ngForm" >
+        <div class="form-row">
+          <div>
+            <label for="destination">Destinazione:</label>
+            <input type="text" id="destination" name="destination" required [(ngModel)]="journey.destination.name">
+          </div>
+        </div>
+        <div class="form-row">
+          <div>
+            <label for="description">Descrizione:</label>
+            <input type="text" id="description" name="description" required [(ngModel)]="journey.description">
+          </div>
+        </div>
+        <div class="form-button">
+           <p-button label="Modifica" icon="pi pi-pencil" (onClick)="editJourney(journeyForm, journey)" ></p-button>
+           <p-button label="Elimina" icon="pi pi-trash" severity="danger" (onClick)="deleteJourney(journey)"></p-button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

@@ -140,9 +140,9 @@ export class ViaggiService {
     return this.http.put(journeyUrlId, journey)
   }
 
-  deleteJourneyById(id: number){
+  deleteJourneyById(id: number): Observable<void> {
     const journeyUrlId = `${this.journeyUrl}/${id}`;
-    return this.http.delete(journeyUrlId)
+    return this.http.delete<void>(journeyUrlId);
   }
 
   getAllJourneysByTripId(tripId: number){

@@ -127,6 +127,6 @@ export class IMieiViaggiComponent implements OnInit {
 
   editTrip(trip: any){
     this.viaggiservice.setTripData(trip)
-    this.router.navigate(['/area-riservata/modifica-viaggio']);
+    this.router.navigateByUrl('/area-riservata/modifica-viaggio');
   }
 }

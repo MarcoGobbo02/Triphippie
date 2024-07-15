@@ -62,5 +62,10 @@ export class IMieiViaggiModificaComponent implements OnInit{
     console.log(trip);
   }
 
+  editjourneys(tripId: any){
+    this.viaggioService.setTripData(tripId)
+     this.router.navigateByUrl("/area-riservata/modifica-tappe")
+  }
+
 
 }
