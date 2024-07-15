@@ -12,6 +12,8 @@
   </form>
 </div>
 
+<h1 class="header" *ngIf="isEmpty">Non ci sono risultati corrispondenti alla tua ricerca</h1>
+
   <div class="travel-container">
     <div class="travel-card" *ngFor="let trip of trips">
       <div class="travel-header">

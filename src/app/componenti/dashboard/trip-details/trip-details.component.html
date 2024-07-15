@@ -14,7 +14,7 @@
       <p>{{trip.description}}</p>
     </div>
     <div class="journeys">
-      <h3>Percorsi</h3>
+      <h3>Tappe</h3>
       <div class="journey-card-container">
         <div class="journey" *ngFor="let journey of journeys">
           <p><strong>Destinazione:</strong> {{journey.destination.name}}</p>
@@ -22,14 +22,8 @@
         </div>
       </div>
     </div>
-    <div class="button-footer">
-    <p-button label="Aggiungi Percorso" icon="pi pi-plus" [outlined]="true" (onClick)="toggleForm()"></p-button>
-    <form *ngIf="showForm"  #journeyForm="ngForm" class="add-journey-form" (ngSubmit)="onCreate(journeyForm)" >
-      <h3>Aggiungi Nuovo Percorso</h3>
-      <input type="text" placeholder="Destinazione" ngModel name="destination" required>
-      <input type="text" placeholder="Descrizione" ngModel name="description" required>
-      <p-button label="Salva" icon="pi pi-check" [outlined]="true" type="submit"></p-button>
-    </form>
+    <div *ngIf="isEmpty" class="button-footer">
+      Momentaneamente non ci sono Tappe specifiche per questo Viaggio
     </div>
   </div>
   

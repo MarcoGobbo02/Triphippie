@@ -3,7 +3,7 @@ import { ButtonModule } from 'primeng/button';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgForm } from '@angular/forms';
-import { Observer } from 'rxjs';
+import { isEmpty, Observer } from 'rxjs';
 import { Router } from '@angular/router';
 import { ViaggiService } from '../../../servizi/viaggi.service';
 
@@ -21,12 +21,17 @@ export class TripDetailsComponent implements OnInit {
   showForm = false;
   journeys: any
   trip:any
+  isEmpty=true
 
   ngOnInit(): void {
     this.trip = this.viaggioService.getTripData();
     console.log(this.trip)
     this.viaggioService.getAllJourneysByTripId(this.trip.id).subscribe((data) => {
       this.journeys = data
+      if(this.journeys.length > 0){
+        this.isEmpty = false;
+      }
+
     })
   }
 

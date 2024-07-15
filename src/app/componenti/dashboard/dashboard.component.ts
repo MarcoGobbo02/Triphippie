@@ -53,6 +53,7 @@ export class DashboardComponent {
 
   startDate: string = '';
   endDate: string = '';
+  isEmpty = true;
 
   applicaFiltri(form: NgForm) {
     this.filters.startDate = form.value.startDate
@@ -77,6 +78,11 @@ export class DashboardComponent {
         console.log(response)
         this.totalTrips = response.length
         console.log('Tutti i viaggi', this.trips);
+        if(this.totalTrips > 0){
+          this.isEmpty=false;
+        }else{
+          this.isEmpty=true
+        }
       },
       error: error => {
         console.error('Tutti i viaggi', error);
@@ -96,12 +102,16 @@ export class DashboardComponent {
   }
 
   getFilteredTrips(): void {
-
     const tripObserver: Observer<any[]> = {
       next: response => {
         console.log(response)
         this.trips = response
         console.log('Filtered trips:', this.trips);
+        if(this.trips.length <= 0){
+          this.isEmpty=true;
+        }else{
+          this.isEmpty=false;
+        }
       },
       error: error => {
         console.error('Failed to fetch trips', error);
@@ -118,7 +128,6 @@ export class DashboardComponent {
     this.filters.page = event.first/10;
     this.filters.tripsSize = event.rows;
     this.getFilteredTrips();
-    
   }
 
 }

@@ -60,7 +60,7 @@ export class IMieiViaggiComponent implements OnInit {
         console.log(response)
         this.trips = response.filter(trip => trip.userId == this.userId); 
         console.log('Filtered trips:', this.trips);
-        if(response.length > 0){
+        if(this.trips.length > 0){
           this.isEmpty=false;
         }
       },
@@ -81,30 +81,6 @@ export class IMieiViaggiComponent implements OnInit {
       .then(() => {
         window.location.reload();
       });
-  }
-
-  getFilteredTrips(): void {
-    const tripObserver: Observer<any[]> = {
-      next: response => {
-        this.trips = response.filter(trip => trip.userId == this.userId); 
-        console.log('Filtered trips:', this.trips);
-        if(response.length > 0){
-          this.isEmpty=false;
-        } 
-      },
-      error: error => {
-        console.error('Failed to fetch trips', error);
-      },
-      complete: () => {
-        console.log('Trip fetch complete');
-      }
-    };
-
-    this.viaggiservice.getFilteredTrip(this.filters).subscribe(tripObserver);
-  }
-
-  selectTravel(trip: any){
-    console.log('Viaggio selezionato:', trip.userId);
   }
 
   deleteTrip(trip: any){
