@@ -125,6 +125,11 @@ export class ViaggiService {
     return this.tripData;
   }
 
+  getNumberTrips(): Observable<any>{
+    const tripUrlnumber = `${this.tripUrl}/total`;
+    return this.http.get<any>(tripUrlnumber);
+  }
+
   //Journey
   createJourney(journey: {tripId: number, stepNumber:number, destination: {name: string, latitude:number, longitude:number}, description: string}){
      return this.http.post(this.journeyUrl, journey)

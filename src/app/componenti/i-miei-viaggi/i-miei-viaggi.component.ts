@@ -44,6 +44,7 @@ export class IMieiViaggiComponent implements OnInit {
   token: any;
   userId: any;
   isEmpty=true;
+  numero!: number;
 
   filters = {
     tripsSize: 10,
@@ -74,6 +75,15 @@ export class IMieiViaggiComponent implements OnInit {
 
     this.viaggiservice.getAllTrips(this.filters.tripsSize).subscribe(tripObserver)
     console.log(this.trips)
+
+    this.viaggiservice.getNumberTrips().subscribe({
+      next: (data: any) => {
+        console.log("Raw data:", data);
+        this.numero = Number(data);
+        console.log("Numero viaggi:", this.numero);
+      },
+      error: (err) => console.error('Errore:', err)
+    });
   }
 
   refreshPage(): void {

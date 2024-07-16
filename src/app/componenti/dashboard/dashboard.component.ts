@@ -74,10 +74,10 @@ export class DashboardComponent {
 
   ngOnInit(): void {
     const tripObserver: Observer<any[]> = {
-      next: response => {
+      next: (response:any) => {
         console.log(response)
-        this.totalTrips = response.length
-        console.log('Tutti i viaggi', this.trips);
+        this.totalTrips = Number(response)
+        console.log('Tutti i viaggi', this.totalTrips);
         if(this.totalTrips > 0){
           this.isEmpty=false;
         }else{
@@ -88,11 +88,11 @@ export class DashboardComponent {
         console.error('Tutti i viaggi', error);
       },
       complete: () => {
-        console.log('Tutti i viaggi');
+        console.log('Tutti i viaggi complete');
       }
     };
   
-    this.viaggiservice.getAllTrips(this.filters.tripsSize).subscribe(tripObserver)
+    this.viaggiservice.getNumberTrips().subscribe(tripObserver)
     this.getFilteredTrips()
   }
 
