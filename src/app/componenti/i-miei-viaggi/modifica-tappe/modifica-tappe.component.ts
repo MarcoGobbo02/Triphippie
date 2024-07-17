@@ -18,6 +18,11 @@ export class ModificaTappeComponent implements OnInit{
   constructor(private viaggiService:ViaggiService, private router:Router){}
   journeys:any
   tripId: any
+  showForm: boolean = false;
+
+  toggleForm(): void {
+    this.showForm = !this.showForm;
+  }
 
   ngOnInit(): void {
     this.tripId = this.viaggiService.getTripData()
@@ -69,5 +74,7 @@ export class ModificaTappeComponent implements OnInit{
     );
   }
 
+  addJourney(form: NgForm): void {
+  }
 
 }

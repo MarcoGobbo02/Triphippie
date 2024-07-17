@@ -6,6 +6,25 @@
 <div class="header">
   <h1>Sembra che non ci siano Tappe collegate a questo viaggio</h1>
 </div>
+
+<div class="container">
+  <p-button (click)="toggleForm()">Add Journey</p-button>
+  <div *ngIf="showForm" class="journey-form">
+    <form #journeyForm="ngForm" (ngSubmit)="addJourney(journeyForm)">
+      <div>
+        <label for="destination">Destination:</label>
+        <input id="destination" name="destination" ngModel required>
+      </div>
+      <div>
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="3" ngModel required></textarea>
+      </div>
+      <div class="form-button">
+        <p-button type="submit" [disabled]="!journeyForm.valid">Save Journey</p-button>
+      </div>
+    </form>
+  </div>
+</div>
   
   <div class="journeys-container">
     <div *ngFor="let journey of journeys" class="journey-form-container">

@@ -17,10 +17,13 @@ export class IMieiViaggiModificaComponent implements OnInit{
 
   constructor(private router: Router, private viaggioService: ViaggiService){}
 
+  tripstring = sessionStorage.getItem('trip')
   trip: any
 
   ngOnInit(): void {
-    this.trip = this.viaggioService.getTripData();
+    if(this.tripstring !== null){
+      this.trip = JSON.parse(this.tripstring)
+    }
     console.log(this.trip)
   }
 

@@ -20,11 +20,15 @@ export class TripDetailsComponent implements OnInit {
   
   showForm = false;
   journeys: any
-  trip:any
+  tripstring = sessionStorage.getItem('trip')
   isEmpty=true
+  trip: any
 
   ngOnInit(): void {
-    this.trip = this.viaggioService.getTripData();
+    if(this.tripstring !== null){
+      this.trip = JSON.parse(this.tripstring)
+    }
+    
     console.log(this.trip)
     this.viaggioService.getAllJourneysByTripId(this.trip.id).subscribe((data) => {
       this.journeys = data

@@ -1,0 +1,26 @@
+<div class="btn-group">
+  <button type="button" (click)="addJourneyForm()">Aggiungi Journey</button>
+  <button type="button" (click)="createJourneysFromArray()">Crea Journeys</button>
+</div>
+
+<div class="container">
+  <div class="journey-form" *ngFor="let form of journeyForms; let i = index">
+    <h3>Journey {{ i + 1 }}</h3>
+    <form [formGroup]="form" (ngSubmit)="onSubmit(i)">
+      <div class="form-group">
+        <label for="destinationName{{i}}">Nome Destinazione:</label>
+        <input id="destinationName{{i}}" formControlName="destinationName" type="text">
+      </div>
+
+      <div class="form-group">
+        <label for="description{{i}}">Descrizione:</label>
+        <textarea id="description{{i}}" formControlName="description"></textarea>
+      </div>
+
+      <div class="btn-group">
+        <button type="submit">Crea Journey</button>
+        <button type="button" (click)="removeJourneyForm(i)">Rimuovi Journey</button>
+      </div>
+    </form>
+  </div>
+</div>

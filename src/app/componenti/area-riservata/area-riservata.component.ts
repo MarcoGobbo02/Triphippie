@@ -20,6 +20,7 @@ export class AreaRiservataComponent {
   logout(event: Event){
   event.preventDefault();
   this.authservice.logout();
+  sessionStorage.clear;
   this.router.navigateByUrl("/login")
   }
 

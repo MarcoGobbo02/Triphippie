@@ -1,5 +1,5 @@
 <div class="container">
-<form #viaggioForm="ngForm" (ngSubmit)="onCreate(viaggioForm)">
+<form #viaggioForm="ngForm" (ngSubmit)="addJourneys(viaggioForm)">
     <h2>Inserisci il tuo Viaggio!</h2>
     <div class="form-row">
         <div>
@@ -48,7 +48,7 @@
         <textarea id="description" name="description" rows="5" placeholder="Una breve descrizione del viaggio" ngModel></textarea>
     </div>
     <div class="form-button">
-        <p-button type="Submit" label="Crea Viaggio!" [disabled]="!viaggioForm.valid"></p-button>
+        <p-button type="submit" icon="pi pi-fw pi-map-marker" label="Continua con la creazione delle Tappe" [disabled]="!viaggioForm.valid"></p-button>
     </div>
 </form>
 </div>

@@ -97,7 +97,9 @@ export class DashboardComponent {
   }
 
   travelDetails(trip: any){
-   this.viaggiservice.setTripData(trip);
+   sessionStorage.clear(); 
+   let stringtrip = JSON.stringify(trip);
+   sessionStorage.setItem('trip', stringtrip);
    this.router.navigateByUrl("/trip-details");
   }
 

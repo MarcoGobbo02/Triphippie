@@ -72,4 +72,10 @@ onCreate(form: NgForm){
 
 }
 
+addJourneys(form: NgForm){
+ //modo per portare il form
+ console.log(form)
+ this.router.navigateByUrl("/area-riservata/crea-tappa");
+}
+
 }
