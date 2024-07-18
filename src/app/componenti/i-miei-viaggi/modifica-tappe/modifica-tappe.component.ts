@@ -4,7 +4,7 @@ import { ButtonModule } from 'primeng/button';
 import { CommonModule } from '@angular/common';
 import { ViaggiService } from '../../../servizi/viaggi.service';
 import { Router } from '@angular/router';
-import { Observer } from 'rxjs';
+import { Observable, Observer } from 'rxjs';
 
 @Component({
   selector: 'app-modifica-tappe',
@@ -17,17 +17,30 @@ export class ModificaTappeComponent implements OnInit{
 
   constructor(private viaggiService:ViaggiService, private router:Router){}
   journeys:any
-  tripId: any
   showForm: boolean = false;
+  tripstring = sessionStorage.getItem('trip')
+  trip: any
+  isEmpty = true
 
   toggleForm(): void {
     this.showForm = !this.showForm;
   }
 
+  refreshPage() {
+    const currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+    });
+  }
+
   ngOnInit(): void {
-    this.tripId = this.viaggiService.getTripData()
-    console.log(this.tripId)
-    this.viaggiService.getAllJourneysByTripId(this.tripId).subscribe((data) => {
+    if(this.tripstring !== null){
+      this.trip = JSON.parse(this.tripstring)
+      this.isEmpty=false
+    }
+    console.log(this.trip)
+
+    this.viaggiService.getAllJourneysByTripId(this.trip.id).subscribe((data) => {
       this.journeys = data
     })
   }
@@ -35,7 +48,7 @@ export class ModificaTappeComponent implements OnInit{
   editJourney(form: NgForm, journey: any){
 
     const journey$ = {
-      tripId: this.tripId,
+      tripId: this.trip.id,
       stepNumber: 1,
       destination: { 
         name: form.value.destination,
@@ -45,10 +58,10 @@ export class ModificaTappeComponent implements OnInit{
       description: form.value.description
     }
 
-    const editUserObserver: Observer<any> = {
+    const editjourneyObserver: Observer<any> = {
       next: response => {
         console.log('edit successful', response);
-        this.router.navigateByUrl('/area-riservata/i-miei-viaggi');
+        this.refreshPage();
       },
       error: error => {
         console.error('edit failed', error);
@@ -58,7 +71,7 @@ export class ModificaTappeComponent implements OnInit{
       }
     }
 
-    this.viaggiService.editJourneyById(journey.id, journey$).subscribe(editUserObserver)
+    this.viaggiService.editJourneyById(journey.id, journey$).subscribe(editjourneyObserver)
 
   }
 
@@ -66,7 +79,7 @@ export class ModificaTappeComponent implements OnInit{
     this.viaggiService.deleteJourneyById(journey.id).subscribe(
       () => {
         console.log(`Journey with ID ${journey.id} deleted successfully`);
-        this.router.navigateByUrl('/area-riservata/i-miei-viaggi');
+        this.refreshPage();
       },
       (error) => {
         console.error('Error deleting journey', error);
@@ -75,6 +88,29 @@ export class ModificaTappeComponent implements OnInit{
   }
 
   addJourney(form: NgForm): void {
-  }
+    const journey = {
+      tripId: this.trip.id,
+      destination: {
+        latitude: 11.111111,
+        longitude: 11.111111,
+        name: form.value.destination,
+      },
+      description: form.value.description
+    }
 
+    const addJourneyObserver: Observer<any> = {
+      next: response => {
+        console.log('create successful', response);
+        this.refreshPage();
+      },
+      error: error => {
+        console.error('create failed', error);
+      },
+      complete: () => {
+        console.log('create request complete');
+      }
+    }
+
+    this.viaggiService.createJourney(journey).subscribe(addJourneyObserver)
+  }
 }

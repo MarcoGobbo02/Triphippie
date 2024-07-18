@@ -65,57 +65,63 @@
     height: 100%;
   }
   
-  .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 90vh;
-    justify-content: center;
-  }
-  
-  .journey-box {
-    background-color: #ffffff;
-    padding: 2rem;
-    margin: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border: 1px solid #ccc; 
-    max-width: 400px;
-    width: 100%;
-    text-align: center;
-  }
-  
-  .journey-box h2 {
-    margin-bottom: 1rem;
-  }
-  
-  .form-group {
-    margin-bottom: 1rem;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-  }
-  
-  .form-group input,
-  .form-group textarea {
-    width: calc(100% - 2rem);
-    padding: 0.5rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }
-  
-  .form-group input:focus,
-  .form-group textarea:focus {
-    border-color: #1220df;
-    box-shadow: 0 0 5px rgba(40, 87, 167, 0.5);
-    outline: none;
-  }
-  
-  .form-foot {
-    margin-top: 1em;
-  }
+ 
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.container .journey-form {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.container .journey-form form {
+  width: 100%;
+}
+
+.container .journey-form form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.container .journey-form form input,
+.container .journey-form form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.container .journey-form form textarea {
+  resize: vertical;
+}
+
+.container .journey-form form input:focus,
+.container .journey-form form textarea:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.container .form-button {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  margin-top: 15px;
+}
+
   
   
   
