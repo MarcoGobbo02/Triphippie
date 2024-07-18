@@ -4,17 +4,17 @@
 </div>
 
 <div class="container">
-  <div class="journey-form" *ngFor="let form of journeyForms; let i = index">
+  <div class="journey-form" *ngFor="let journey of journeyForms; let i = index">
     <h3>Journey {{ i + 1 }}</h3>
-    <form [formGroup]="form" (ngSubmit)="onSubmit(i)">
+    <form (ngSubmit)="createJourney(journey, response?.tripId)">
       <div class="form-group">
         <label for="destinationName{{i}}">Nome Destinazione:</label>
-        <input id="destinationName{{i}}" formControlName="destinationName" type="text">
+        <input id="destinationName{{i}}" [(ngModel)]="journey.destinationName" name="destinationName{{i}}" type="text" required>
       </div>
 
       <div class="form-group">
         <label for="description{{i}}">Descrizione:</label>
-        <textarea id="description{{i}}" formControlName="description"></textarea>
+        <textarea id="description{{i}}" [(ngModel)]="journey.description" name="description{{i}}" required></textarea>
       </div>
 
       <div class="btn-group">

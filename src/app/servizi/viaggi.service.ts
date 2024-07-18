@@ -131,7 +131,7 @@ export class ViaggiService {
   }
 
   //Journey
-  createJourney(journey: {tripId: number, stepNumber:number, destination: {name: string, latitude:number, longitude:number}, description: string}){
+  createJourney(journey: {tripId: number, destination: {name: string, latitude:number, longitude:number}, description: string}){
      return this.http.post(this.journeyUrl, journey)
   }
 
