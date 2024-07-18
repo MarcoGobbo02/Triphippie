@@ -2,6 +2,8 @@
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
+@import "leaflet/dist/leaflet.css";
+
 
 body, html {
     margin: 0;

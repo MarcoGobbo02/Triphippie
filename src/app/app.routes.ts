@@ -14,12 +14,14 @@ import { IMieiViaggiModificaComponent } from './componenti/i-miei-viaggi/i-miei-
 import { TripDetailsComponent } from './componenti/dashboard/trip-details/trip-details.component';
 import { ModificaTappeComponent } from './componenti/i-miei-viaggi/modifica-tappe/modifica-tappe.component';
 import { CreaTappaComponent } from './componenti/crea-viaggio/crea-tappa/crea-tappa.component';
+import { MappaProvaComponent } from './componenti/mappa-prova/mappa-prova.component';
 
 export const routes: Routes = [
     {path: '', redirectTo:'home' , pathMatch:'full'},
     {path:'home', component:HomepageComponent},
     {path:'login', component:LoginComponent},
     {path:'registrazione', component:RegistrazioneComponent},
+    {path:'mappa', component:MappaProvaComponent},
     {path:'dashboard', component:DashboardComponent, canActivate: [AuthGuard]},
     {path:'trip-details', component:TripDetailsComponent, canActivate: [AuthGuard] },
     {path:'area-riservata', component:AreaRiservataComponent , canActivate: [AuthGuard], children:[
