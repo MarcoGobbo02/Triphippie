@@ -1,54 +1,57 @@
 <div class="container">
-<form #viaggioForm="ngForm" (ngSubmit)="addJourneys(viaggioForm)">
-    <h2>Inserisci il tuo Viaggio!</h2>
-    <div class="form-row">
-        <div>
-            <label for="startDate">Data di inizio del viaggio:</label>
-            <input type="date" id="startDate" name="startDate" required ngModel>
+    <form #viaggioForm="ngForm" (ngSubmit)="addJourneys(viaggioForm)">
+        <h2>Inserisci il tuo Viaggio!</h2>
+        <div class="form-row">
+            <div>
+                <label for="startDate">Data di inizio del viaggio:</label>
+                <input type="date" id="startDate" name="startDate" required ngModel>
+            </div>
+            <div>
+                <label for="endDate">Data di fine del viaggio:</label>
+                <input type="date" id="endDate" name="endDate" required ngModel>
+            </div>
+        </div>
+        <div class="form-row">
+            <div>
+                <label for="vehicle">Veicolo:</label>
+                <select id="vehicle" name="vehicle" required ngModel>
+                  <option >AUTO</option>
+                  <option >BICICLETTA</option>
+                  <option >AEREO</option>
+                  <option >TRENO</option>
+                  <option >MOTOCICLO</option>
+                </select>
+            </div>
+            <div>
+                <label for="type">Tipo di viaggio:</label>
+                <select id="type" name="type" required ngModel>
+                    <option >RELAX</option>
+                    <option >DEGUSTAZIONE</option>
+                    <option >ESCURSIONE</option>
+                    <option >CULTURALE</option>
+                    <option >FAMIGLIE</option>
+                </select>
+            </div>
         </div>
         <div>
-            <label for="endDate">Data di fine del viaggio:</label>
-            <input type="date" id="endDate" name="endDate" required ngModel>
+        <div class="mappabtn">
+            <label for="destination">Punto di partenza ed arrivo del viaggio:</label>
+            <p-button icon="pi pi-fw pi-external-link" (onClick)="toggleMap()" label="Apri la Mappa!"></p-button>
         </div>
-    </div>
-    <div class="form-row">
-        <div>
-            <label for="vehicle">Veicolo:</label>
-            <select id="vehicle" name="vehicle" required ngModel>
-              <option >AUTO</option>
-              <option >BICICLETTA</option>
-              <option >AEREO</option>
-              <option >TRENO</option>
-              <option >MOTOCICLO</option>
-            </select>
         </div>
         <div>
-            <label for="type">Tipo di viaggio:</label>
-            <select id="type" name="type" required ngModel>
-                <option >RELAX</option>
-                <option >DEGUSTAZIONE</option>
-                <option >ESCURSIONE</option>
-                <option >CULTURALE</option>
-                <option >FAMIGLIE</option>
-            </select>
+            <label for="description">Descrizione:</label>
+            <textarea id="description" name="description" rows="5" placeholder="Una breve descrizione del viaggio" ngModel></textarea>
         </div>
-    </div>
-    <div class="form-row">
-        <div>
-            <label for="startDestination">Punto di partenza del Viaggio:</label>
-            <input type="text" id="startDestination" name="startDestination" required ngModel>
+        <div class="form-button">
+            <p-button type="submit" icon="pi pi-fw pi-map-marker" label="Continua con la creazione delle Tappe" [disabled]="!viaggioForm.valid"></p-button>
         </div>
-        <div>
-            <label for="endDestination">Punto di arrivo del Viaggio:</label>
-            <input type="text" id="endDestination" name="endDestination" required ngModel>
-        </div>
-    </div>
-    <div>
-        <label for="description">Descrizione:</label>
-        <textarea id="description" name="description" rows="5" placeholder="Una breve descrizione del viaggio" ngModel></textarea>
-    </div>
-    <div class="form-button">
-        <p-button type="submit" icon="pi pi-fw pi-map-marker" label="Continua con la creazione delle Tappe" [disabled]="!viaggioForm.valid"></p-button>
-    </div>
-</form>
+    </form>
+</div>
+  
+<div *ngIf="isMapVisible" class="modal">
+  <div class="modal-content">
+    <span class="close-button" (click)="toggleMap()">&times;</span>
+    <div id="map" style="width: 100%; height: 100%;"></div>
+   </div>
 </div>

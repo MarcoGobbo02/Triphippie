@@ -1,25 +1,15 @@
 <div class="btn-group">
-  <button type="button" (click)="addJourneyForm()">Aggiungi Journey</button>
-  <button type="button" (click)="createJourneysFromArray()">Crea Journeys</button>
+  <p-button (onClick)="createTrip()" label="Crea Viaggio senza Tappe!"></p-button>
+  <p-button (onClick)="createJourneysFromArray()" label="Crea Viaggio con Tappe!" icon="pi pi-fw pi-map-marker" severity="success"></p-button>
 </div>
 
-<div class="container">
-  <div class="journey-form" *ngFor="let journey of journeyForms; let i = index">
-    <h3>Journey {{ i + 1 }}</h3>
-    <form>
-      <div class="form-group">
-        <label for="destinationName{{i}}">Nome Destinazione:</label>
-        <input id="destinationName{{i}}" [(ngModel)]="journey.destinationName" name="destinationName{{i}}" type="text" required>
-      </div>
+<div class="mappabtn">
+<p-button icon="pi pi-fw pi-external-link" (onClick)="toggleMap()" label="Apri la Mappa!"></p-button>
+</div>
 
-      <div class="form-group">
-        <label for="description{{i}}">Descrizione:</label>
-        <textarea id="description{{i}}" [(ngModel)]="journey.description" name="description{{i}}" required></textarea>
-      </div>
-
-      <div class="btn-group">
-        <button type="button" (click)="removeJourneyForm(i)">Rimuovi Journey</button>
-      </div>
-    </form>
-  </div>
+<div *ngIf="isMapVisible" class="modal">
+  <div class="modal-content">
+    <span class="close-button" (click)="toggleMap()">&times;</span>
+    <div id="map" style="width: 100%; height: 100%;"></div>
+   </div>
 </div>

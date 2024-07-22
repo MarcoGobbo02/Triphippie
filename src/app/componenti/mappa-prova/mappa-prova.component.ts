@@ -1,26 +1,54 @@
-import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Component, Inject, OnInit, PLATFORM_ID, ViewChild, ViewContainerRef} from '@angular/core';
+import { isPlatformBrowser, CommonModule } from '@angular/common';
+import { ButtonModule } from 'primeng/button';
 
 interface MarkerData {
   lat: number;
   lng: number;
   name: string;
-  marker?: any; // aggiungere una proprietà per il marker
+}
+
+interface Trip {
+  startDate: string;
+  endDate: string;
+  vehicle: string;
+  type: string;
+  startDestination:{
+    latitude: number;
+    longitude: number;
+    name: string;
+  };
+  endDestination:{
+    latitude: number;
+    longitude: number;
+    name: string;
+  };
+  description: string;
 }
 
 @Component({
   selector: 'app-mappa-prova',
   templateUrl: './mappa-prova.component.html',
-  styleUrls: ['./mappa-prova.component.css']
+  styleUrls: ['./mappa-prova.component.css'],
+  standalone: true,
+  imports: [CommonModule, ButtonModule]
 })
 export class MappaProvaComponent implements OnInit {
   private map: any;
-  private markers: MarkerData[] = []; // Array per memorizzare i marker
+  private startPoint: MarkerData | null = null;
+  private endPoint: MarkerData | null = null;
+  private startPointMarker: any = null;
+  private endPointMarker: any = null;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: object) {}
+  isMapVisible: boolean = false;
+
+  @ViewChild('dynamicContainer', { read: ViewContainerRef }) container!: ViewContainerRef;
+
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: object) {}
 
   ngOnInit(): void {
-    if (isPlatformBrowser(this.platformId)) {
+    if (isPlatformBrowser(this.platformId) && this.isMapVisible) {
       this.loadLeaflet();
     }
   }
@@ -34,14 +62,12 @@ export class MappaProvaComponent implements OnInit {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(this.map);
 
-    // Configura il percorso predefinito delle icone di Leaflet
     (L.Icon.Default as any).mergeOptions({
       iconRetinaUrl: 'assets/marker-icon-2x.png',
       iconUrl: 'assets/marker-icon.png',
       shadowUrl: 'assets/marker-shadow.png'
     });
 
-    // Ascolta l'evento di click sulla mappa
     this.map.on('click', (e: any) => {
       const lat = e.latlng.lat;
       const lng = e.latlng.lng;
@@ -52,27 +78,97 @@ export class MappaProvaComponent implements OnInit {
 
   private addMarker(markerData: MarkerData): void {
     const L = window['L'];
+    
+    if (this.startPoint && this.endPoint) {
+      alert('Puoi aggiungere solo due marker: Partenza ed Arrivo');
+      return;
+    }
 
     const marker = L.marker([markerData.lat, markerData.lng]).addTo(this.map);
     marker.bindPopup(`<b>${markerData.name}</b><br>Lat: ${markerData.lat}, Lng: ${markerData.lng}`).openPopup();
-
-    // Aggiungi il marker all'array e imposta il listener per la rimozione
     marker.on('click', () => {
       if (confirm(`Vuoi rimuovere il marker "${markerData.name}"?`)) {
         this.removeMarker(markerData);
       }
     });
 
-    // Memorizza il marker nell'array
-    markerData.marker = marker;
-    this.markers.push(markerData);
+    if (!this.startPoint) {
+      this.startPoint = markerData;
+      this.startPointMarker = marker;
+    } else {
+      this.endPoint = markerData;
+      this.endPointMarker = marker;
+    }
   }
 
-  private removeMarker(markerData: MarkerData): void {
-    // Rimuovi il marker dalla mappa
-    this.map.removeLayer(markerData.marker);
+    removeMarker(markerData: MarkerData): void {
+    if (this.startPoint && this.startPoint.lat === markerData.lat && this.startPoint.lng === markerData.lng) {
+      if (this.startPointMarker) {
+        this.map.removeLayer(this.startPointMarker);
+      }
+      this.startPoint = null;
+      this.startPointMarker = null;
+    } else if (this.endPoint && this.endPoint.lat === markerData.lat && this.endPoint.lng === markerData.lng) {
+      if (this.endPointMarker) {
+        this.map.removeLayer(this.endPointMarker);
+      }
+      this.endPoint = null;
+      this.endPointMarker = null;
+    }
+  }
 
-    // Rimuovi il marker dall'array
-    this.markers = this.markers.filter(m => m !== markerData);
+  toggleMap(): void {
+    this.isMapVisible = !this.isMapVisible;
+    if (this.isMapVisible) {
+      setTimeout(() => {
+        this.loadLeaflet();
+      }, 0);
+    } else {
+      this.destroyMap();
+    }
+  }
+
+  private destroyMap(): void {
+    if (this.map) {
+      this.map.remove();
+      this.map = null;
+    }
+  }
+
+  createTravelData(): Trip
+ | null {
+    if (!this.startPoint || !this.endPoint) {
+      alert('Devi selezionare sia un punto di inizio che un punto di fine.');
+      return null;
+    }
+
+    const travelData: Trip
+   = {
+      startDate: '2024-07-12',
+      endDate: '2024-07-18',
+      vehicle: 'AUTO',
+      type: 'CULTURALE',
+      startDestination: {
+        latitude: this.startPoint.lat,
+        longitude: this.startPoint.lng,
+        name: this.startPoint.name,
+      },
+      endDestination: {
+        latitude: this.endPoint.lat,
+        longitude: this.endPoint.lng,
+        name: this.endPoint.name,
+      },
+      description: 'Viaggio per castelli a intervistare i fantasmi del luogo'
+    };
+
+    return travelData;
+  }
+
+  showTravelData(): void {
+    const travelData = this.createTravelData();
+    if (travelData) {
+      console.log(travelData);
+      alert(JSON.stringify(travelData, null, 2));
+    }
   }
 }
