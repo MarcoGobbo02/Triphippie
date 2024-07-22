@@ -140,7 +140,7 @@ export class ViaggiService {
     return this.http.get(journeyUrlId)
   }
 
-  editJourneyById(id: number, journey: {tripId: number, stepNumber:number, destination: {name: string, latitude:number, longitude:number}, description: string}){
+  editJourneyById(id: number, journey: {tripId: number, destination: {name: string, latitude:number, longitude:number}, description: string}){
     const journeyUrlId = `${this.journeyUrl}/${id}`;
     return this.http.put(journeyUrlId, journey)
   }

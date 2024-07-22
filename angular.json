@@ -23,8 +23,7 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "src/media",
-                "output": "./assets/"
+                "input": "src/assets"
               }
             ],
             "styles": [
