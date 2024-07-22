@@ -62,11 +62,6 @@ export class MappaProvaComponent implements OnInit {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(this.map);
 
-    (L.Icon.Default as any).mergeOptions({
-      iconRetinaUrl: 'assets/marker-icon-2x.png',
-      iconUrl: 'assets/marker-icon.png',
-      shadowUrl: 'assets/marker-shadow.png'
-    });
 
     this.map.on('click', (e: any) => {
       const lat = e.latlng.lat;

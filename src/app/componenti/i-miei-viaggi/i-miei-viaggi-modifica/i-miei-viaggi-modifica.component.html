@@ -33,15 +33,9 @@
                 </select>
             </div>
         </div>
-        <div class="form-row">
-            <div>
-                <label for="startDestination">Punto di partenza del Viaggio:</label>
-                <input type="text" id="startDestination" name="startDestination" required [(ngModel)]="trip.startDestination.name">
-            </div>
-            <div>
-                <label for="endDestination">Punto di arrivo del Viaggio:</label>
-                <input type="text" id="endDestination" name="endDestination" required [(ngModel)]="trip.endDestination.name">
-            </div>
+        <div class="mappabtn">
+            <label for="destination">Punto di partenza ed arrivo del viaggio:</label>
+            <p-button icon="pi pi-fw pi-external-link" (onClick)="toggleMap()" label="Apri la Mappa!"></p-button>
         </div>
         <div>
             <label for="description">Descrizione:</label>
@@ -53,3 +47,10 @@
         </div>
     </form>
  </div>
+
+ <div *ngIf="isMapVisible" class="modal">
+    <div class="modal-content">
+      <span class="close-button" (click)="toggleMap()">&times;</span>
+      <div id="map" style="width: 100%; height: 100%;"></div>
+     </div>
+  </div>
