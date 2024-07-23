@@ -1,40 +1,38 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background-color: #e0e0e0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
 }
 
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2em;
-  justify-content: center;
-  padding: 1em;
+.section {
+  margin-bottom: 30px;
 }
 
 .btn-group {
   display: flex;
   justify-content: center;
-  gap: 1em;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  text-align: center;
+  gap: 10px;
+  margin-top: 10px;
 }
 
-.mappabtn{
-  display: flex;
-  justify-content: center;
-  gap: 1em;
-  margin-top: 15px;
-  height: 90vh;
+.mappabtn {
+  margin-top: 10px;
+}
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.btn {
+  font-size: 1em;
+  padding: 10px 20px;
 }
 
 /* cose per le mappe */

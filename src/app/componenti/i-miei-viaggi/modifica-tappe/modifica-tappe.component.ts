@@ -212,6 +212,7 @@ export class ModificaTappeComponent implements OnInit {
       this.map.remove();
       this.map = null;
       this.newMarker=null;
+      this.isEditing=false
     }
   }
 }

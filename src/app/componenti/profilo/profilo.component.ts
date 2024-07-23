@@ -144,25 +144,6 @@ export class ProfiloComponent implements OnInit{
     }
   }
 
-  modificaImmagine(): void {
-    if (this.selectedFile) {
-      const editObserver: Observer<any> = {
-        next: (response: any) => {
-          console.log('Immagine modificata con successo', response);
-          this.loadProfileImage(); // Ricarica l'immagine per aggiornarla
-        },
-        error: (err: any) => {
-          console.error('Errore nella modifica dell\'immagine del profilo', err);
-        },
-        complete: () => {
-          console.log('Modifica immagine completata');
-        }
-      };
-
-      this.profileService.editPhoto(this.userId, this.selectedFile).subscribe(editObserver);
-    }
-  }
-
   eliminaImmagine(): void {
     const deleteObserver: Observer<any> = {
       next: (response: any) => {
@@ -178,5 +159,10 @@ export class ProfiloComponent implements OnInit{
     };
 
     this.profileService.deletePhoto(this.userId).subscribe(deleteObserver);
+  }
+
+    triggerFileInput(): void {
+    const fileInput = document.getElementById('file-input') as HTMLElement;
+    fileInput.click();
   }
 }

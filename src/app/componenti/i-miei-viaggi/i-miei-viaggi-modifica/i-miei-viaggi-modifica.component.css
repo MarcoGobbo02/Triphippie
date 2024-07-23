@@ -118,4 +118,11 @@ body {
       padding: 5px 10px;
       border-radius: 5px;
     }
+
+    p{
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      text-align: center;
+    }
   

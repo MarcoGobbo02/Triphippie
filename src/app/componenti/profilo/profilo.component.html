@@ -1,19 +1,23 @@
 <div class="profile-box">
     <!-- Sezione immagine profilo -->
-    <div class="profile-section">
-      <ng-container *ngIf="!profileImage; else imageTemplate">
-        <input class="custom-file-input" type="file" (change)="onProfileImageChange($event)" accept="image/*">
-      </ng-container>
-      <ng-template #imageTemplate>
-        <div class="image-upload">
-          <img [src]="profileImage" alt="Profile Image" class="profile-image"/>   
-        </div>
-        <div class="button-image">
-          <p-button (click)="modificaImmagine()" label="Modifica Immagine" />
-          <p-button (click)="eliminaImmagine()" label="Elimina Immagine" />  
-        </div>  
-      </ng-template>
+<div class="profile-section">
+  <ng-container *ngIf="!profileImage; else imageTemplate">
+    <input id="file-input" class="custom-file-input" type="file" (change)="onProfileImageChange($event)" accept="image/*">
+    <p-button label="Aggiungi Immagine Profilo" icon="pi pi-upload" (onClick)="triggerFileInput()" size="small"></p-button>
+  </ng-container>
+  <ng-template #imageTemplate>
+    <div class="image-upload">
+      <img [src]="profileImage" alt="Profile Image" class="profile-image"/>   
     </div>
+    <div class="button-image">
+      <input id="file-input" class="custom-file-input" type="file" (change)="onProfileImageChange($event)" accept="image/*">
+      <p-button label="Modifica Immagine Profilo" icon="pi pi-pencil" (onClick)="triggerFileInput()" size="small"></p-button>
+      <p-button severity="danger" (onClick)="eliminaImmagine()" label="Elimina Immagine" icon="pi pi-fw pi-trash" size="small"></p-button>  
+    </div>  
+  </ng-template>
+</div>
+
+
     <!-- Sezione nome e cognome -->
     <div class="profile-section">
       <h3>{{utente.firstName}} {{utente.lastName}}</h3>

@@ -34,14 +34,7 @@
   }
   
   .custom-file-input {
-    position: relative;
-    display: inline-block;
-    background-color: #f0f0f0; 
-    padding: 10px 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, border-color 0.3s;
+   display: none;
   }
   
   .custom-file-input:hover {
