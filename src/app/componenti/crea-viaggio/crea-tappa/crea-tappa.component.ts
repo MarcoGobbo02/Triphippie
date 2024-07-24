@@ -102,12 +102,7 @@ export class CreaTappaComponent implements OnInit {
       description: this.trip.description
     };
 
-    return this.viaggiService.createTrip(trip).pipe(
-      catchError(error => {
-        console.error('Trip creation failed', error);
-        return of(null);
-      })
-    );
+    return this.viaggiService.createTrip(trip);
   }
 
   // Cose per la mappa

@@ -25,6 +25,11 @@ export class IMieiViaggiModificaComponent implements OnInit{
 
   tripstring = sessionStorage.getItem('trip')
   trip: any
+  map: any;
+startPoint: MarkerData | null = null;
+endPoint: MarkerData | null = null;
+startPointMarker: any = null;
+endPointMarker: any = null;
 
   ngOnInit(): void {
     if(this.tripstring !== null){
@@ -42,14 +47,14 @@ export class IMieiViaggiModificaComponent implements OnInit{
       vehicle: form.value.vehicle,
       type: form.value.type,
       startDestination: {
-        latitude: this.startPoint!.lat,
-        longitude: this.startPoint!.lng,
-        name: this.startPoint!.name
+        latitude: this.startPoint ? this.startPoint.lat : this.trip.startDestination.latitude,
+        longitude: this.startPoint ? this.startPoint.lng : this.trip.startDestination.longitude,
+        name: this.startPoint ? this.startPoint.name : this.trip.startDestination.name
       },
       endDestination: {
-        latitude: this.endPoint!.lat,
-        longitude: this.endPoint!.lng,
-        name: this.endPoint!.name
+        latitude: this.endPoint ? this.endPoint.lat : this.trip.endDestination.latitude,
+        longitude: this.endPoint ? this.endPoint.lng : this.trip.endDestination.longitude,
+        name: this.endPoint ? this.endPoint.name : this.trip.endDestination.name
       },
       description: form.value.description
     }
@@ -76,11 +81,6 @@ export class IMieiViaggiModificaComponent implements OnInit{
      this.router.navigateByUrl("/area-riservata/modifica-tappe")
   }
 
-  map: any;
-startPoint: MarkerData | null = null;
-endPoint: MarkerData | null = null;
-startPointMarker: any = null;
-endPointMarker: any = null;
 
 isMapVisible: boolean = false;
 
