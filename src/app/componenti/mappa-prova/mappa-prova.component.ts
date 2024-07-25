@@ -66,7 +66,7 @@ export class MappaProvaComponent implements OnInit {
     (L.Icon.Default as any).mergeOptions({
       iconRetinaUrl: 'C:\\Users\\marco\\OneDrive\\Desktop\\triphippie\\triphippie\\src\\assets\\leaflet\\marker-icon-2x.png',
       iconUrl: 'assets/leaflet/marker-icon.png',
-      shadowUrl: 'assets/leaflet/marker-shadow.png'
+      shadowUrl: 'leaflet/marker-shadow.png'
     });
 
     this.map.on('click', (e: any) => {
