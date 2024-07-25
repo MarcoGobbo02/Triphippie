@@ -59,7 +59,7 @@ endPointMarker: any = null;
       description: form.value.description
     }
   
-    const registrationObserver: Observer<any> = {
+    const editTripObserver: Observer<any> = {
       next: response => {
         console.log('trip edited successfully', response);
         this.router.navigateByUrl('/area-riservata/i-miei-viaggi');
@@ -72,7 +72,7 @@ endPointMarker: any = null;
       }
     }
   
-    this.viaggioService.editTripById(this.trip.id, trip).subscribe(registrationObserver)
+    this.viaggioService.editTripById(this.trip.id, trip).subscribe(editTripObserver)
     console.log(trip);
   }
 

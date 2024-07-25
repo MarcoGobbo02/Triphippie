@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, PLATFORM_ID, ViewChild, ViewContainerRef} from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID, ViewChild, ViewContainerRef } from '@angular/core';
 import { isPlatformBrowser, CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 
@@ -62,6 +62,12 @@ export class MappaProvaComponent implements OnInit {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(this.map);
 
+    // Imposta il percorso per le icone dei marker
+    (L.Icon.Default as any).mergeOptions({
+      iconRetinaUrl: 'C:\\Users\\marco\\OneDrive\\Desktop\\triphippie\\triphippie\\src\\assets\\leaflet\\marker-icon-2x.png',
+      iconUrl: 'assets/leaflet/marker-icon.png',
+      shadowUrl: 'assets/leaflet/marker-shadow.png'
+    });
 
     this.map.on('click', (e: any) => {
       const lat = e.latlng.lat;

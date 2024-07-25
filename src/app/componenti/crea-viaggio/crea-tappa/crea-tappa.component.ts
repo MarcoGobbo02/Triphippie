@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit, PLATFORM_ID, ViewChild, ViewContainerRef } from '@angular/core';
 import { ViaggiService } from '../../../servizi/viaggi.service';
-import { catchError, concatMap, finalize, from, Observable, of } from 'rxjs';
+import { catchError, concatMap, finalize, from, Observable, Observer, of } from 'rxjs';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
@@ -103,6 +103,42 @@ export class CreaTappaComponent implements OnInit {
     };
 
     return this.viaggiService.createTrip(trip);
+  }
+
+  createTrip$(){
+    const trip = {
+      userId: this.trip.userId,
+      startDate: this.trip.startDate,
+      endDate: this.trip.endDate,
+      vehicle: this.trip.vehicle,
+      type: this.trip.type,
+      startDestination: {
+        latitude: this.trip.startDestination.latitude,
+        longitude: this.trip.startDestination.longitude,
+        name: this.trip.startDestination.name
+      },
+      endDestination: {
+        latitude: this.trip.endDestination.latitude,
+        longitude: this.trip.endDestination.longitude,
+        name: this.trip.endDestination.name
+      },
+      description: this.trip.description
+    };
+
+    const createTripObserver: Observer<any> = {
+      next: response => {
+        console.log('trip edited successfully', response);
+        this.router.navigateByUrl('/area-riservata/i-miei-viaggi');
+      },
+      error: error => {
+        console.error('trip edited failed', error);
+      },
+      complete: () => {
+        console.log('trip edited request complete');
+      }
+    }
+
+    this.viaggiService.createTrip(trip).subscribe(createTripObserver)
   }
 
   // Cose per la mappa
